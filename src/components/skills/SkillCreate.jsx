@@ -1,20 +1,13 @@
-import { useState } from 'react'
+import { useContext } from 'react'
+import SkillContext from '../../context/SkillContext'
 
 const SkillCreate = () => {
 
-  const [formValues, setFormValues] = useState({
-    name: "",
-    slug: ""
-  })
-
-  const onChange = (e) => {
-    const { name, value } = e.target
-    setFormValues({ ...formValues, [name]: value })
-  }
+  const {formValues, onChange, storeSkill,errors} = useContext(SkillContext)
 
   return (
     <div className='mt-12'>
-      <form action="" className="bg-white shadow-md mx-auto p-4 max-w-md rounded-sm">
+      <form onSubmit={storeSkill} className="bg-white shadow-md mx-auto p-4 max-w-md rounded-sm">
         <div className="space-y-6">
           <div className="mb-4">
             <label htmlFor="name" className="block mb-2 text-sm font-medium">Name</label>
@@ -23,6 +16,7 @@ const SkillCreate = () => {
               value={formValues["name"]}
               onChange={onChange}
               type="text" className='border border-300 text-gray-900 text-sm rounded-md block w-full p-2' />
+              {errors.name && <span className='text-sm text-red-400'>{errors.name[0]}</span>}
           </div>
         </div>
         <div className="space-y-6">
@@ -31,6 +25,7 @@ const SkillCreate = () => {
             <input
               name='slug' value={formValues["slug"]} onChange={onChange}
               type="text" className='border border-300 text-gray-900 text-sm rounded-md block w-full p-2' />
+              {errors.slug && <span className='text-sm text-red-400'>{errors.slug[0]}</span>}
           </div>
         </div>
         <div className="mb-4">

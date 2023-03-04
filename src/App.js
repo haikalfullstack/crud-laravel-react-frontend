@@ -3,9 +3,11 @@ import Home from './components/Home'
 import SkillIndex from './components/skills/SkillIndex';
 import SkillCreate from './components/skills/SkillCreate';
 import SkillEdit from './components/skills/SkillEdit';
+import { SkillProvider } from './context/SkillContext';
 
 function App() {
   return (
+    <SkillProvider>
     <div className="bg-slate-200 pt-5">
       <div className="max-w-3xl mx-auto min-h-screen">
         <nav >
@@ -26,6 +28,7 @@ function App() {
         </Routes>
       </div>
     </div>
+    </SkillProvider>
   );
 }
 
