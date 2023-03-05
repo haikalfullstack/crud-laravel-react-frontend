@@ -4,7 +4,7 @@ import SkillContext from '../../context/SkillContext'
 
 const SkillIndex = () => {
 
-  const {skills, getSkills} = useContext(SkillContext)
+  const {skills, getSkills, deleteSkill} = useContext(SkillContext)
 
   useEffect(() => {
   
@@ -43,8 +43,9 @@ const SkillIndex = () => {
                   <td className="px-6 py-4">
                     {skill.slug}
                   </td>
-                  <td className="px-6 py-4">
-                    edit/delete
+                  <td className="px-6 py-4 space-x-2">
+                    <Link to={`/skills/${skill.id}/edit`} className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md">Edit</Link>
+                    <button onClick={() => deleteSkill(skill.id)} className='px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md'>Delete</button>
                   </td>
 
                 </tr>
